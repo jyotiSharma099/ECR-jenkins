@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-                  stage('verify') {
+                  stage('Clone repository') {
                     steps {
                      git([url: 'https://github.com/jyotiSharma099/ECR-jenkins.git', branch: 'main'])
 		     sh 'sudo apt install docker.io -y'
@@ -18,7 +18,7 @@ pipeline {
                 }
                 stage('Docker test') {
                    steps {
-                   sh 'sudo docker run -d -p 8087:80  wordpress:v1'
+                   sh 'sudo docker run -d -p 8086:80  wordpress:v1'
                  
             }
                 }
@@ -32,7 +32,7 @@ pipeline {
                               secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                             ]
             ]) {
-                sh 'aws s3 ls'
+                sh 'sudo docker push 007340509278.dkr.ecr.us-east-1.amazonaws.com/docker_ecr_repo:latest'
             }
         }
     }

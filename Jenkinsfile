@@ -5,9 +5,9 @@ pipeline {
                     steps {
                      git([url: 'https://github.com/jyotiSharma099/ECR-jenkins.git', branch: 'main'])
 		     sh 'sudo apt install docker.io -y'
-                     sh 'docker --version'
-                     sh 'docker images'
-                     sh 'docker ps'
+                     sh 'sudo docker --version'
+                     sh 'sudo docker images'
+                     sh 'sudo docker ps'
         }
     }
                   stage('Build') {

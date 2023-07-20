@@ -32,7 +32,7 @@ pipeline {
                               secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                             ]
             ]) {
-                    sh ' aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 007340509278.dkr.ecr.us-east-1.amazonaws.com'
+                    sh ' aws ecr get-login-password --region us-east-1 | docker login --jyotiSharma099 AWS --password-stdin 007340509278.dkr.ecr.us-east-1.amazonaws.com'
                     sh 'sudo docker tag wordpress:v1 007340509278.dkr.ecr.us-east-1.amazonaws.com/wordpress:v1'
                     sh 'sudo docker push docker push 007340509278.dkr.ecr.us-east-1.amazonaws.com/wordpress:v1'
             }

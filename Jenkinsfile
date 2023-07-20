@@ -18,7 +18,7 @@ pipeline {
                 }
                 stage('Docker test') {
                    steps {
-                   sh 'sudo docker run -d -p 8084:80  wordpress:v1'
+                   sh 'sudo docker run -d -p 8083:80  wordpress:v1'
                  
             }
                 }

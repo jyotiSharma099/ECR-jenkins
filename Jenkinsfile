@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    environment {
-        DOCKER_CONFIG = '/tmp/.docker'
-    }
     stages {
         stage('Clone repository') {
             steps {
@@ -34,12 +31,10 @@ pipeline {
                         secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                     ]
                 ]) {
-                    sh 'mkdir -p $DOCKER_CONFIG'
-                    sh 'echo "{\"credHelpers\":{\"007340509278.dkr.ecr.us-east-1.amazonaws.com\":\"ecr-login\"}}" > $DOCKER_CONFIG/config.json'
-                    sh 'sudo docker login --username AWS --password-stdin 007340509278.dkr.ecr.us-east-1.amazonaws.com < $DOCKER_CONFIG/config.json'
+                    sh 'aws ecr get-login-password --region us-east-1 | sudo docker login --username AWS --password-stdin 007340509278.dkr.ecr.us-east-1.amazonaws.com'
                     sh 'sudo docker tag wordpress:v1 007340509278.dkr.ecr.us-east-1.amazonaws.com/wordpress:v1'
                     sh 'sudo docker push 007340509278.dkr.ecr.us-east-1.amazonaws.com/wordpress:v1'
-                    sh 'rm -rf $DOCKER_CONFIG'
+                   
                 }
             }
         }

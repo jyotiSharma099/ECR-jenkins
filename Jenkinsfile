@@ -13,6 +13,7 @@ pipeline {
                   stage('Build') {
                    steps {
                    sh 'sudo docker build -t wordpress:v1 .'
+		   sh 'sudo docker images'
             }
                 }
                 stage('Docker test') {

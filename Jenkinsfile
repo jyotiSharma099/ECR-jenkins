@@ -18,7 +18,7 @@ pipeline {
                 }
                 stage('Docker test') {
                    steps {
-                   sh 'sudo docker run -d -p 8086:80  wordpress:v1'
+                   sh 'sudo docker run -d -p 8085:80  wordpress:v1'
                  
             }
                 }
@@ -32,7 +32,7 @@ pipeline {
                               secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                             ]
             ]) {
-                sh 'sudo docker push 007340509278.dkr.ecr.us-east-1.amazonaws.com/docker_ecr_repo:latest'
+                sh 'sudo docker push 007340509278.dkr.ecr.us-east-1.amazonaws.com/wordpress:v1'
             }
         }
     }

@@ -32,8 +32,8 @@ pipeline {
                     ]
                 ]) {
                     sh 'aws ecr get-login-password --region us-east-1 | sudo docker login --username AWS --password-stdin 007340509278.dkr.ecr.us-east-1.amazonaws.com'
-                    sh 'sudo docker tag wordpress:v1 007340509278.dkr.ecr.us-east-1.amazonaws.com/wordpress:v1'
-                    sh 'sudo docker push 007340509278.dkr.ecr.us-east-1.amazonaws.com/wordpress:v1'
+                    sh 'sudo docker tag wordpress:v1 007340509278.dkr.ecr.us-east-1.amazonaws.com/docker_ecr_repo:latest'
+                    sh 'sudo docker push 007340509278.dkr.ecr.us-east-1.amazonaws.com/docker_ecr_repo:latest'
                    
                 }
             }

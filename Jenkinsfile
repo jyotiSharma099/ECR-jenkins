@@ -4,9 +4,7 @@ pipeline {
                   stage('verify') {
                     steps {
                      git([url: 'https://github.com/jyotiSharma099/ECR-jenkins.git', branch: 'main'])
-					 sh 'sudo apt install docker.io -y'
-                     sh 'ls -lhtr'
-                     sh 'pwd'
+		     sh 'sudo apt install docker.io -y'
                      sh 'docker --version'
                      sh 'docker images'
                      sh 'docker ps'

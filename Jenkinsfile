@@ -18,13 +18,12 @@ pipeline {
         }
         stage('Docker test') {
             steps {
-                sh 'sudo docker run -d -p 8085:80 wordpress:v1'
+                sh 'sudo docker run -d -p 8084:80 wordpress:v1'
             }
         }
         stage('AWS Configure') {
             steps {
                 script {
-                    docker.image('amazon/aws-cli:2.x').inside {
                         withCredentials([
                             [
                                 $class: 'AmazonWebServicesCredentialsBinding',
@@ -43,4 +42,3 @@ pipeline {
             }
         }
     }
-}

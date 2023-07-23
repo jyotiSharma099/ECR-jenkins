@@ -12,13 +12,13 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'sudo docker build -t wordpress:v1 .'
+                sh 'sudo docker build -t wordpress:latest .'
                 sh 'sudo docker images'
             }
         }
         stage('Docker test') {
             steps {
-                sh 'sudo docker run -d -p 8082:80 wordpress:v1'
+                sh 'sudo docker run -d -p 8082:80 wordpress:latest'
             }
         }
         stage('AWS Configure') {

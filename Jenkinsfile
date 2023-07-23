@@ -31,11 +31,9 @@ pipeline {
                         secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                     ]
                 ]) {
-                    #sh 'aws ecr get-login-password --region us-east-1 | sudo docker login --username AWS --password-stdin 007340509278.dkr.ecr.us-east-1.amazonaws.com'
+    
                     sh  'aws ecr-public get-login-password --region us-east-1 | sudo docker login --username AWS --password-stdin public.ecr.aws/p4z1i4n3'
-                    #sh 'sudo docker tag wordpress:v1 007340509278.dkr.ecr.us-east-1.amazonaws.com/docker_ecr_repo:latest'
-                    sh 'sudo docker tag wordpress:latest public.ecr.aws/p4z1i4n3/wordpress:latest'
-                    #sh 'sudo docker push 007340509278.dkr.ecr.us-east-1.amazonaws.com/docker_ecr_repo:latest'
+                    sh 'sudo docker tag wordpress:latest public.ecr.aws/p4z1i4n3/wordpress:latest
                     sh 'sudo docker push public.ecr.aws/p4z1i4n3/wordpress:latest'
                    
                 }

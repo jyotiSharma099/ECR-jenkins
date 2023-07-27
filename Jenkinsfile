@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Docker test') {
             steps {
-                sh 'sudo docker run -d -p 8081:80 wordpress:latest'
+                sh 'sudo docker run -d -p 8085:80 wordpress:latest'
             }
         }
         stage('AWS Configure') {
